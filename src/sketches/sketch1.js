@@ -10,7 +10,11 @@ class cir {
 
   show() {
     noStroke();
-    fill(255, 255, 255, this.opc);
+    if (params.light == "true"){
+      fill(0, 0, 0, this.opc);
+    } else {
+      fill(255, 255, 255, this.opc);
+    }
     circle(this.x, this.y, this.r, this.r)
   }
   update() {
@@ -30,20 +34,26 @@ class cir {
 }
 
 var circles = [];
+var params;
 
 function r(x, y) {
   return random(x, y)
 }
 
 function setup() {
+  params = getURLParams();
   createCanvas(windowWidth, windowHeight);
-  for (var i = 0; i < (width*height/750); i++) {
+  for (var i = 0; i < (width*height/700); i++) {
     circles[i] = new cir(r(0, width), r(0, height), r(0, ((width<height)? height : width)/50), r(0, TWO_PI), r(0, width/750), r(0, 75));
   }
 }
 
 function draw() {
-  background(0);
+  if (params.light == "true"){
+    background(255);
+  } else {
+    background(0);
+  }
   for (var i = 0; i < circles.length; i++) {
     circles[i].update();
     circles[i].show();
@@ -51,6 +61,10 @@ function draw() {
   
   filter(POSTERIZE, 2);
   noStroke()
-  fill(0, 150)
+  if (params.light == "true"){
+    fill(255, 150);
+  } else {
+    fill(0, 150);
+  }
   rect(0, 0, width, height);
 }
