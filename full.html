@@ -1,21 +1,21 @@
 <!DOCTYPE html>
 <html>
-  <head>
-  	<base href="https://rahabvis.github.io/">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.7.3/p5.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.7.3/addons/p5.dom.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.7.3/addons/p5.sound.min.js"></script>
-    <link rel="stylesheet" type="text/css" href="src/styles/full.css">
-    <meta charset="utf-8" />
-    <title>
-      Rahab Visuals
-    </title>
-  </head>
-  <body>
-    <script id="canvas"></script>
-  </body>
-  <script>
-    var id = window.location.href.searchParams.get("id");
-    document.getElementById("canvas").src = "src/sketches/sketch" + id + ".js";
-  </script>
+	<head>
+		<base href="https://rahabvis.github.io/">
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.7.3/p5.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.7.3/addons/p5.dom.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.7.3/addons/p5.sound.min.js"></script>
+		<link rel="stylesheet" type="text/css" href="src/styles/full.css">
+		<meta charset="utf-8" />
+		<title>
+			Rahab Visuals
+		</title>
+	</head>
+	<body>
+		<script id="canvas"></script>
+	</body>
+	<script>
+		var id = window.location.href.searchParams.get("id");
+		document.getElementById("canvas").src = "src/sketches/sketch" + id + ".js";
+	</script>
 </html>
