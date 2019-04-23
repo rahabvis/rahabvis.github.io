@@ -25,7 +25,7 @@ class tri {
 var triangles = [];
 
 function setup() {
-  createCanvas(700, 500);
+  createCanvas(windowWidth, windowHeight);
   for (var i = 0; i < (width*height/200); i++) {
     triangles[i] = new tri(random(width), random(height), random(25), 0, random(255), 255, random(360));
   }
