@@ -15,7 +15,12 @@
 		<script id="canvas"></script>
 	</body>
 	<script>
-		var id = window.location.href.searchParams.get("id");
+		var urlParams = new URLSearchParams(window.location.search);
+        var id = 1;
+		if (urlParams.has("id")) {
+        	id = urlParams.get("id");
+        }
+        document.write(id);
 		document.getElementById("canvas").src = "src/sketches/sketch" + id + ".js";
 	</script>
 </html>
