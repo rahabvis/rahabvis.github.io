@@ -38,7 +38,7 @@ function r(x, y) {
 function setup() {
   createCanvas(windowWidth, windowHeight);
   for (var i = 0; i < (width*height/750); i++) {
-    circles[i] = new cir(r(0, width), r(0, height), r(0, width/45), r(0, TWO_PI), r(0, width/750), r(0, 75));
+    circles[i] = new cir(r(0, width), r(0, height), r(0, ((width<height)? height : width)/50), r(0, TWO_PI), r(0, width/750), r(0, 75));
   }
 }
 
