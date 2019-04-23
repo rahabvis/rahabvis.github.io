@@ -18,23 +18,25 @@ class tri {
     );
   }
   update() {
-    this.rot += noise(this.x, this.y)*radians(10) + radians(5)
+    this.rot += noise(this.x, this.y, time)*radians(180) - radians(90)
   }
 }
 
 var triangles = [];
 
 function setup() {
-  createCanvas(windowWidth, windowHeight);
-  for (var i = 0; i < (width*height/150); i++) {
+  createCanvas(700, 500);
+  for (var i = 0; i < (width*height/200); i++) {
     triangles[i] = new tri(random(width), random(height), random(25), 0, random(255), 255, random(360));
   }
 }
-
+var time = 0;
 function draw() {
   background(0);
   for (var i = 0; i < triangles.length; i++) {
     triangles[i].show();
     triangles[i].update();
   }
+  filter(POSTERIZE, 4)
+  time += 0.005
 }
