@@ -12,6 +12,10 @@
     </title>
   </head>
   <body>
-    <script src="src/sketches/sketch1.js"></script>
+    <script id="canvas"></script>
   </body>
+  <script>
+    var id = window.location.href.searchParams.get("id");
+    document.getElementById("canvas").src = "src/sketches/sketch" + id + ".js";
+  </script>
 </html>
