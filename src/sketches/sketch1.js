@@ -11,9 +11,9 @@ class cir {
   show() {
     noStroke();
     if (params.light == "true"){
-      fill(0, 0, 0, this.opc);
+      fill(0, 0, 50, this.opc);
     } else {
-      fill(255, 255, 255, this.opc);
+      fill(200, 200, 255, this.opc);
     }
     circle(this.x, this.y, this.r, this.r)
   }
@@ -43,8 +43,8 @@ function r(x, y) {
 function setup() {
   params = getURLParams();
   createCanvas(windowWidth, windowHeight);
-  for (var i = 0; i < (width*height/700); i++) {
-    circles[i] = new cir(r(0, width), r(0, height), r(0, ((width<height)? height : width)/50), r(0, TWO_PI), r(0, width/750), r(0, 75));
+  for (var i = 0; i < (width*height/1000); i++) {
+    circles[i] = new cir(r(0, width), r(0, height), r(0, ((width<height)? width : height)/20), r(0, TWO_PI), r(0, width/750), r(0, 75));
   }
 }
 
