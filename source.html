@@ -16,15 +16,15 @@
 	</body>
 	<script>
 		var urlParams = new URLSearchParams(window.location.search);
-        var id = 1;
+        	var id = 1;
 		if (urlParams.has("id")) {
-        	id = urlParams.get("id");
-        }
+        		id = urlParams.get("id");
+        	}
 		var xmlhttp;
 		xmlhttp = new XMLHttpRequest();
 		xmlhttp.open('GET', "src/sketches/sketch" + 1 + ".js", false);
 		xmlhttp.send();
 		var source = xmlhttp.responseText;
-        document.getElementById("source").innerHTML = source;
+        	document.getElementById("source").innerHTML = source;
 	</script>
 </html>
