@@ -26,7 +26,7 @@ var triangles = [];
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
-  for (var i = 0; i < (width*height/250); i++) {
+  for (var i = 0; i < (width*height/700); i++) {
     
     triangles[i] = new tri(random(width), random(height), random(((width<height)? height : width)/25), 0, random(255), 255, random(360));
   }
@@ -39,6 +39,6 @@ function draw() {
     triangles[i].show();
     triangles[i].update();
   }
-  filter(POSTERIZE, 4)
+  filter(POSTERIZE, 3)
   time += 0.005
 }
