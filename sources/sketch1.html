@@ -1,0 +1,74 @@
+<html>
+<body>
+class cir {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;constructor(x, y, r, dir, spd, opc) {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;this.x = x;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;this.y = y;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;this.r = r;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;this.dir = dir;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;this.spd = spd;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;this.opc = opc;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;show() {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;noStroke();<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if (params.light == "true"){<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fill(0, 0, 50, this.opc);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;} else {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fill(200, 200, 255, this.opc);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;circle(this.x, this.y, this.r, this.r)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+&nbsp;&nbsp;&nbsp;&nbsp;update() {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;this.x = this.x + sin(this.dir) * this.spd<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if (this.x > width+this.r) {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;this.x -= width + 2*this.r<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;} else if (this.x < -this.r) {<br>
+      this.x += width + 2*this.r<br>
+    }<br>
+    this.y = this.y + cos(this.dir) * this.spd<br>
+    if (this.y > height+this.r) {<br>
+      this.y -= height + 2*this.r<br>
+    } else if (this.y < -this.r) {<br>
+      this.y += height + 2 * this.r<br>
+    }<br>
+  }<br>
+}<br>
+<br>
+var circles = [];<br>
+var params;<br>
+<br>
+function r(x, y) {<br>
+  return random(x, y)<br>
+}<br>
+<br>
+function setup() {<br>
+  params = getURLParams();<br>
+  createCanvas(windowWidth, windowHeight);<br>
+  for (var i = 0; i < (width*height/1000); i++) {<br>
+    circles[i] = new cir(r(0, width), r(0, height), r(0, ((width<height)? width : height)/20), r(0, TWO_PI), r(0, width/750), r(0, 75));<br>
+  }<br>
+}<br>
+<br>
+function draw() {<br>
+  if (params.light == "true"){<br>
+    background(255);<br>
+  } else {<br>
+    background(0);<br>
+  }<br>
+  for (var i = 0; i < circles.length; i++) {<br>
+    circles[i].update();<br>
+    circles[i].show();<br>
+  }<br>
+  <br>
+  filter(POSTERIZE, 2);<br>
+  noStroke()<br>
+  if (params.light == "true"){<br>
+    fill(255, 150);<br>
+  } else {<br>
+    fill(0, 150);<br>
+  }<br>
+  rect(0, 0, width, height);<br>
+}<br>
+</body>
+</html>
